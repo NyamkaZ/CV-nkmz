@@ -32,10 +32,6 @@
       overflow-x: hidden;
       cursor: none;
     }
-
-    /* ===========================================================
-       CUSTOM CURSOR
-    =========================================================== */
     .cursor {
       width: 14px; height: 14px;
       background: var(--accent);
@@ -910,6 +906,296 @@
       transition: color 0.3s;
     }
     .mobile-menu a:hover { color: var(--accent); }
+
+    /* ===========================================================
+       EDIT MODAL
+    =========================================================== */
+    .edit-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .edit-modal.active {
+      display: flex;
+    }
+    .edit-modal-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .edit-modal h3 {
+      color: var(--text);
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .edit-modal input,
+    .edit-modal textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      outline: none;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+    .edit-modal input:focus,
+    .edit-modal textarea:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(247,106,140,0.1);
+      background: rgba(247,106,140,0.03);
+    }
+    .edit-modal textarea {
+      resize: vertical;
+      height: 120px;
+    }
+    .edit-modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+    .edit-modal-buttons button {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .edit-modal-buttons .save-btn {
+      background: var(--accent2);
+      color: var(--bg);
+      font-weight: 600;
+    }
+    .edit-modal-buttons .save-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(247,106,140,0.35);
+    }
+    .edit-modal-buttons .cancel-btn {
+      background: rgba(124,106,247,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(124,106,247,0.2);
+    }
+    .edit-modal-buttons .cancel-btn:hover {
+      background: rgba(124,106,247,0.22);
+    }
+
+    /* Admin badge label */
+    #admin .section-label span {
+      color: var(--accent2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    #admin .section-label span::before {
+      content: '⬡';
+      font-size: 14px;
+      animation: blink 2s ease infinite;
+    }
+    #admin .section-label::before {
+      background: var(--accent2);
+    }
+
+    /* Admin card overrides */
+    #admin .card {
+      opacity: 1 !important;
+      transform: none !important;
+      border-color: rgba(247,106,140,0.15);
+      background: linear-gradient(135deg, var(--card), rgba(247,106,140,0.03));
+      margin-bottom: 20px;
+    }
+    #admin .card:hover {
+      border-color: rgba(247,106,140,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(247,106,140,0.05);
+    }
+    #admin .card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    #admin .card h3::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent2);
+      box-shadow: 0 0 10px var(--accent2);
+      flex-shrink: 0;
+    }
+
+    /* Admin inputs */
+    #admin textarea,
+    #admin input[type="text"],
+    #admin input:not([type="submit"]):not([type="button"]) {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      padding: 14px 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      resize: vertical;
+      margin-bottom: 14px;
+      display: block;
+    }
+    #admin textarea:focus,
+    #admin input:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(247,106,140,0.1);
+      background: rgba(247,106,140,0.03);
+    }
+    #admin textarea::placeholder,
+    #admin input::placeholder {
+      color: var(--muted);
+      opacity: 0.6;
+    }
+    #admin textarea {
+      height: 110px;
+      line-height: 1.7;
+    }
+
+    /* Admin buttons */
+    #admin button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    #admin button::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+    }
+    #admin button:hover::after { transform: translateX(100%); }
+
+    /* Primary save/add button */
+    #admin button[onclick="saveAbout()"],
+    #admin button[onclick="addProject()"] {
+      background: var(--accent2);
+      color: var(--bg);
+      font-weight: 600;
+    }
+    #admin button[onclick="saveAbout()"]:hover,
+    #admin button[onclick="addProject()"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(247,106,140,0.35);
+    }
+
+    /* Admin project list */
+    #adminProjects {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #adminProjects > div {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    #adminProjects > div:hover {
+      border-color: rgba(247,106,140,0.25);
+      background: rgba(247,106,140,0.03);
+    }
+    #adminProjects b {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    #adminProjects hr { display: none; }
+
+    /* Edit / Delete inline buttons */
+    #adminProjects button {
+      font-size: 10px !important;
+      padding: 7px 14px !important;
+    }
+    #adminProjects button[onclick*="editProject"] {
+      background: rgba(124,106,247,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(124,106,247,0.2) !important;
+    }
+    #adminProjects button[onclick*="editProject"]:hover {
+      background: rgba(124,106,247,0.22);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(124,106,247,0.2) !important;
+    }
+    #adminProjects button[onclick*="deleteProject"] {
+      background: rgba(247,106,140,0.1);
+      color: var(--accent2);
+      border: 1px solid rgba(247,106,140,0.2) !important;
+    }
+    #adminProjects button[onclick*="deleteProject"]:hover {
+      background: rgba(247,106,140,0.2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(247,106,140,0.2) !important;
+    }
+
+    /* Admin section top bar */
+    #admin::before {
+      content: '// ADMIN MODE ACTIVE';
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--accent2);
+      background: rgba(247,106,140,0.07);
+      border: 1px solid rgba(247,106,140,0.15);
+      border-radius: 8px;
+      padding: 10px 18px;
+      margin-bottom: 28px;
+      text-align: center;
+      animation: blink 3s ease infinite;
+    }
+
+    @media (max-width: 768px) {
+      #adminProjects > div {
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>
@@ -943,6 +1229,7 @@
     </div>
   </nav>
 
+  
  
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about" class="mobile-link">Тухай</a>
@@ -962,9 +1249,8 @@
           <span class="name-main">Нямцогт "7</span>
           <span class="name-accent">.</span>
         </h1>
-        <p class="hero-desc">
-          Бодит бизнесийн асуудлыг шийдэх дижитал бүтээгдэхүүн хийдэг
-          хэрэглэгчийн туршлага, шинийг эрэлхийлэх зарчмаар ажилладаг хөгжүүлэгч.(Complex solver)
+        <p class="hero-desc" id="aboutText">
+          Бодит бизнесийн асуудлыг шийдэх дижитал бүтээгдэхүүн бүтээдэг, хэрэглэгчийн туршлага болон шинэлэг шийдлийг эрхэмлэдэг хөгжүүлэгч.
         </p>
         <div class="hero-contacts">
           <a href="https://github.com/NyamkaZ" target="_blank" class="contact-pill">
@@ -979,7 +1265,7 @@
         <img src="02dc5baf1eeb939ba787ce260a945efa.jpg" alt="Нямцогт" class="inner">
       </div>
       <div class="scroll-indicator">
-        <span>Доош</span>
+        <span>^</span>
         <div class="scroll-line"></div>
       </div>
     </div>
@@ -1026,115 +1312,19 @@
 
     <section id="experience">
       <div class="section-label"><span>Ажлын туршлага</span></div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <div class="card-title">Fullstack Developer</div>
-                <div class="card-sub">:D</div>
-              </div>
-              <div class="card-date">2026 — одоо</div>
-            </div>
-            <p class="card-desc">
-              React, Next.js болон API ашиглан томоохон вэб аппликейшн хөгжүүлэх.
-              Микрофронтенд архитектур, performance optimization, CI/CD pipeline бий болгох.
-              томоохон төсөл олон хүнтэй баг удирдах, код review хийх.
-            </p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <div class="card-title">Senior Web Developer</div>
-                <div class="card-sub">Project Development LLC</div>
-              </div>
-              <div class="card-date">2024 — 2025</div>
-            </div>
-            <p class="card-desc">
-              Node.js + Express backend, MySQL өгөгдлийн сан, React frontend хөгжүүлэлт.
-              Mobile-first responsive дизайн, SEO optimization.
-            </p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <div class="card-title">Junior Web Developer</div>
-                <div class="card-sub">StartUp Hub</div>
-              </div>
-              <div class="card-date">2023 — 2024</div>
-            </div>
-            <p class="card-desc">
-              HTML, CSS, JavaScript ашиглан вэб сайт хөгжүүлэх.
-            </p>
-          </div>
-        </div>
-      </div>
+      <div id="experienceContainer"></div>
     </section>
 
     <!-- EDUCATION -->
     <section id="education">
       <div class="section-label"><span>Боловсрол</span></div>
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <div class="card-title">Компьютер програм хангамж</div>
-            <div class="card-sub">Их засаг их сургууль</div>
-          </div>
-          <div class="card-date">2023 — 2026</div>
-        </div>
-        <p class="card-desc">
-          Программ хангамж, алгоритм, өгөгдлийн бүтэц, программын инженерчлэл чиглэлээр суралцсан.
-          Голч дүн: 3.7 / 4.0
-        </p>
-      </div>
+      <div id="educationContainer"></div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-label"><span>Төслүүд</span></div>
-      <div class="project-card">
-        <div class="card-header">
-          <div class="proj-title">Миний анхны CV</div>
-          <a href="https://nyamkaz.github.io/nkm/" class="proj-link">↗ Github</a>
-        </div>
-        <p class="card-desc">
-          PHP, JavaScript, HTML, CSS ашиглан бүтээсэн бүрэн анхны CV.
-          Admin dashboard.
-        </p>
-        <div class="proj-stack">
-          <span>PHP</span><span>JavaScript</span><span>HTML</span><span>CSS</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-header">
-          <div class="proj-title">Хиймэл оюунд суурилсан ирц бүртгэх систем</div>
-          <a href="http://localhost/machinatte/website/" class="proj-link">↗ Live</a>
-        </div>
-        <p class="card-desc">
-          Python, PHP, CSS, MySQL, NUMPY, ашиглан бүтээсэн Хиймэл оюунд суурилсан ирц бүртгэх систем.
-          Real-time харилцаа холбоо, машин сургалттай drag-and-drop интерфейс, хувийн мэдэгдэл etc.
-        </p>
-        <div class="proj-stack">
-          <span>Python</span><span>PHP</span><span>CSS</span><span>MySQL</span><span>NUMPY</span>
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="card-header">
-          <div class="proj-title">Эмнэлгийн систэм (Realtime чатлах боломжтой)</div>
-          <a href="http://localhost/pediatric-hospital/" class="proj-link">↗ Live</a>
-        </div>
-        <p class="card-desc">
-          PHP, HTML, CSS, MySQL ашиглан бүтээсэн эмнэлгийн систэм.
-          Real-time чатлах боломжтой, OpenAI API ашиглан эмнэлгийн тусламж үзүүлэх.
-        </p>
-        <div class="proj-stack">
-          <span>PHP</span><span>HTML</span><span>CSS</span><span>MySQL</span>
-        </div>
-      </div>
+      <div id="staticProjectsContainer"></div>
     </section>
 
     <!-- CONTACT -->
@@ -1157,6 +1347,55 @@
         </div>
       </div>
     </section>
+
+    <section id="admin" style="display:none;">
+      <div class="section-label"><span>Admin Panel</span></div>
+
+      <div class="card">
+        <h3>Миний тухай засах</h3>
+        <textarea id="aboutInput" placeholder="Өөрийн тухай бичих..."></textarea>
+        <button onclick="saveAbout()">&#10003; &nbsp;Хадгалах</button>
+      </div>
+
+      <div class="card">
+        <h3>Төсөл нэмэх</h3>
+        <input id="projTitle" type="text" placeholder="Төслийн нэр" />
+        <input id="projDesc" type="text" placeholder="Тайлбар" />
+        <input id="projLink" type="text" placeholder="Холбоос URL" />
+        <button onclick="addProject()">+ &nbsp;Нэмэх</button>
+      </div>
+
+      <div class="card">
+        <h3>Төслүүд удирдах</h3>
+        <div id="adminProjects"></div>
+      </div>
+
+      <div class="card">
+        <h3>Боловсрол засах</h3>
+        <div id="adminEducation"></div>
+      </div>
+
+      <div class="card">
+        <h3>Ажлын туршлага засах</h3>
+        <div id="adminExperience"></div>
+      </div>
+    </section>
+
+    <!-- EDIT MODAL -->
+    <div id="editModal" class="edit-modal">
+      <div class="edit-modal-content">
+        <h3 id="modalTitle">Засах</h3>
+        <input type="text" id="editTitle" placeholder="Төслийн нэр" />
+        <input type="text" id="editSubtitle" placeholder="Байгууллага" style="display:none;" />
+        <input type="text" id="editDate" placeholder="Хугацаа" style="display:none;" />
+        <input type="text" id="editLink" placeholder="Холбоос URL" style="display:none;" />
+        <textarea id="editDesc" placeholder="Тайлбар"></textarea>
+        <div class="edit-modal-buttons">
+          <button class="cancel-btn" onclick="closeEditModal()">Болих</button>
+          <button class="save-btn" onclick="saveEdit()">Хадгалах</button>
+        </div>
+      </div>
+    </div>
 
     <footer id="footer">
       Бүтээсэн: <span>Нямцогт</span> · <span>2026</span> · <span class="footer-heart">♥</span> · Улаанбаатар, Монгол
@@ -1266,9 +1505,13 @@
       });
     }, observerOptions);
 
-    document.querySelectorAll('.card, .project-card, .skill-tag, .stat-box, .timeline-item').forEach(el => {
-      observer.observe(el);
-    });
+    function observeElements() {
+      document.querySelectorAll('.card, .project-card, .skill-tag, .stat-box, .timeline-item').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    observeElements();
 
     // ============================================================
     // ANIMATED COUNTER
@@ -1296,6 +1539,432 @@
     }, { threshold: 0.5 });
 
     document.querySelectorAll('.stat-box').forEach(box => counterObserver.observe(box));
+
+    const defaultAbout = "Бодит бизнесийн асуудлыг шийдэх дижитал бүтээгдэхүүн бүтээдэг, хэрэглэгчийн туршлага болон шинэлэг шийдлийг эрхэмлэдэг хөгжүүлэгч.";
+    const defaultProjects = [];
+
+    let about = localStorage.getItem("about") || defaultAbout;
+    let projects = JSON.parse(localStorage.getItem("projects")) || defaultProjects;
+    let editingProjectIndex = null;
+    let editingEducation = false;
+    let editingExperienceIndex = null;
+
+    function renderAbout() {
+      const aboutText = document.getElementById('aboutText');
+      const aboutInput = document.getElementById('aboutInput');
+      if (aboutText) aboutText.innerText = about;
+      if (aboutInput) aboutInput.value = about;
+    }
+
+    function saveAbout() {
+      about = document.getElementById('aboutInput').value;
+      localStorage.setItem('about', about);
+      renderAbout();
+    }
+
+    function renderProjects() {
+      const container = document.querySelector('#projects');
+      const adminContainer = document.getElementById('adminProjects');
+
+      document.querySelectorAll('.dynamic-project').forEach(el => el.remove());
+      if (adminContainer) adminContainer.innerHTML = '';
+
+      projects.forEach((p, index) => {
+        const div = document.createElement('div');
+        div.className = 'project-card dynamic-project';
+        div.innerHTML = `
+          <div class="card-header">
+            <div class="proj-title">${p.title}</div>
+            ${p.link ? `<a href="${p.link}" class="proj-link" target="_blank">↗ Visit</a>` : ''}
+          </div>
+          <p class="card-desc">${p.desc}</p>
+        `;
+        if (container) container.appendChild(div);
+
+        if (adminContainer) {
+          const adminDiv = document.createElement('div');
+          adminDiv.innerHTML = `
+            <b>${p.title}</b>
+            <button onclick="editProject(${index})">Edit</button>
+            <button onclick="deleteProject(${index})">Delete</button>
+            <hr>
+          `;
+          adminContainer.appendChild(adminDiv);
+        }
+      });
+      
+      observeElements();
+    }
+
+    function addProject() {
+      const title = document.getElementById('projTitle').value.trim();
+      const desc = document.getElementById('projDesc').value.trim();
+      const link = document.getElementById('projLink').value.trim();
+
+      if (!title || !desc) {
+        return alert('хоосон байна');
+      }
+
+      projects.push({ title, desc, link });
+      localStorage.setItem('projects', JSON.stringify(projects));
+      renderProjects();
+      document.getElementById('projTitle').value = '';
+      document.getElementById('projDesc').value = '';
+      document.getElementById('projLink').value = '';
+    }
+
+    function deleteProject(index) {
+      projects.splice(index, 1);
+      localStorage.setItem('projects', JSON.stringify(projects));
+      renderProjects();
+    }
+
+    function editProject(index) {
+      const newTitle = prompt('Шинэ гарчиг', projects[index].title);
+      const newDesc = prompt('Шинэ тайлбар', projects[index].desc);
+      if (newTitle && newDesc) {
+        projects[index] = { title: newTitle, desc: newDesc };
+        localStorage.setItem('projects', JSON.stringify(projects));
+        renderProjects();
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === '0') {
+        const pass = prompt('Admin password?');
+        if (pass === '0') {
+          const admin = document.getElementById('admin');
+          if (admin) admin.style.display = 'block';
+          alert('Admin mode ON');
+        }
+      }
+      if (e.key === 'Escape') {
+        closeEditModal();
+      }
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('editModal').addEventListener('click', (e) => {
+      if (e.target.id === 'editModal') {
+        closeEditModal();
+      }
+    });
+
+    // =======================
+    // STATIC PROJECTS & EDUCATION DATA
+    // =======================
+    const defaultStaticProjects = [
+      {
+        title: "Миний анхны CV",
+        desc: "PHP, JavaScript, HTML, CSS ашиглан бүтээсэн бүрэн анхны CV.\nAdmin dashboard.",
+        link: "https://nyamkaz.github.io/nkm/"
+      },
+      {
+        title: "Машин сургалтийн аргаар хиймэл оюунд суурилсан ирц бүртгэх систем\n localhostoор харуулах боломжтой",
+        desc: "Python, PHP, CSS, MySQL, NUMPY, ашиглан бүтээсэн Хиймэл оюунд суурилсан ирц бүртгэх систем.\nReal-time харилцаа холбоо, машин сургалттай drag-and-drop интерфейс, хувийн мэдэгдэл etc.",
+        link: "http://localhost/machinatte/website/"
+      },
+      {
+        title: "Эмнэлгийн систэм (Realtime чатлах боломжтой)\n localhostoор харуулах боломжтой",
+        desc: "PHP, HTML, CSS, MySQL ашиглан бүтээсэн эмнэлгийн систэм.\nReal-time чатлах боломжтой, OpenAI API ашиглан эмнэлгийн тусламж үзүүлэх.",
+        link: "http://localhost/pediatric-hospital/"
+      }
+    ];
+
+    const defaultEducation = {
+      title: "Компьютер програм хангамж",
+      institution: "Их засаг их сургууль",
+      date: "2023 — 2026",
+      desc: "Программ хангамж, алгоритм, өгөгдлийн бүтэц, программын инженерчлэл чиглэлээр суралцаж байгаа.\nГолч дүн: 3.7 / 4.0"
+    };
+
+    const defaultExperience = [
+      {
+        title: "Fullstack Developer not actually ;D",
+        company: "LLC",
+        date: "2026 — одоо",
+        desc: "React, Next.js болон API ашиглан томоохон вэб аппликейшн хөгжүүлэх.\nМикрофронтенд архитектур, performance optimization, CI/CD pipeline бий болгох.\n код review хийх."
+      },
+      {
+        title: "Senior Web Developer",
+        company: "Project Development LLC",
+        date: "2024 — 2025",
+        desc: "Node.js + Express backend, MySQL өгөгдлийн сан, React frontend хөгжүүлэлт.\nMobile-first responsive дизайн, SEO optimization."
+      },
+      {
+        title: "Junior Web Developer",
+        company: "LLC",
+        date: "2023 — 2024",
+        desc: "HTML, CSS, JavaScript ашиглан вэб сайт хөгжүүлэх."
+      }
+    ];
+
+    let staticProjects = JSON.parse(localStorage.getItem("staticProjects")) || defaultStaticProjects;
+    let education = JSON.parse(localStorage.getItem("education")) || defaultEducation;
+    let experience = JSON.parse(localStorage.getItem("experience")) || defaultExperience;
+
+    function renderStaticProjects() {
+      const container = document.getElementById('staticProjectsContainer');
+      const adminContainer = document.getElementById('adminEducation');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      staticProjects.forEach((p, index) => {
+        const div = document.createElement('div');
+        div.className = 'project-card';
+        div.innerHTML = `
+          <div class="card-header">
+            <div class="proj-title">${p.title}</div>
+            <a href="${p.link}" class="proj-link">↗ Visit</a>
+          </div>
+          <p class="card-desc">${p.desc}</p>
+        `;
+        container.appendChild(div);
+      });
+
+      observeElements();
+    }
+
+    function renderEducation() {
+      const container = document.getElementById('educationContainer');
+      if (!container) return;
+      
+      container.innerHTML = `
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">${education.title}</div>
+              <div class="card-sub">${education.institution}</div>
+            </div>
+            <div class="card-date">${education.date}</div>
+          </div>
+          <p class="card-desc">${education.desc}</p>
+        </div>
+      `;
+      
+      observeElements();
+    }
+
+    function renderAdminEducation() {
+      const adminContainer = document.getElementById('adminEducation');
+      if (!adminContainer) return;
+      
+      let adminHTML = '<h4 style="color: var(--accent); margin-bottom: 12px; font-size: 14px;">Төслүүд:</h4>';
+      staticProjects.forEach((p, index) => {
+        adminHTML += `
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;">
+            <b style="flex: 1; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text);">${p.title}</b>
+            <button onclick="editStaticProject(${index})" style="font-size: 10px; padding: 7px 14px; background: rgba(124,106,247,0.12); color: var(--accent); border: 1px solid rgba(124,106,247,0.2); border-radius: 10px; cursor: pointer;">Edit</button>
+            <button onclick="deleteStaticProject(${index})" style="font-size: 10px; padding: 7px 14px; background: rgba(247,106,140,0.1); color: var(--accent2); border: 1px solid rgba(247,106,140,0.2); border-radius: 10px; cursor: pointer;">Delete</button>
+          </div>
+        `;
+      });
+      
+      adminHTML += '<h4 style="color: var(--accent); margin-bottom: 12px; margin-top: 20px; font-size: 14px;">Боловсрол:</h4>';
+      adminHTML += `
+        <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;">
+          <b style="flex: 1; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text);">${education.title}</b>
+          <button onclick="editEducation()" style="font-size: 10px; padding: 7px 14px; background: rgba(124,106,247,0.12); color: var(--accent); border: 1px solid rgba(124,106,247,0.2); border-radius: 10px; cursor: pointer;">Edit</button>
+        </div>
+      `;
+      
+      adminContainer.innerHTML = adminHTML;
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').classList.remove('active');
+      editingProjectIndex = null;
+      editingEducation = false;
+      editingExperienceIndex = null;
+    }
+
+    function saveEdit() {
+      const newTitle = document.getElementById('editTitle').value.trim();
+      const newDesc = document.getElementById('editDesc').value.trim();
+      
+      if (!newTitle || !newDesc) {
+        alert('Нэр болон тайлбар оруулаарай');
+        return;
+      }
+      
+      if (editingEducation) {
+        const newSubtitle = document.getElementById('editSubtitle').value.trim();
+        const newDate = document.getElementById('editDate').value.trim();
+        
+        if (!newSubtitle || !newDate) {
+          alert('Бүх талбарыг оруулаарай');
+          return;
+        }
+        
+        education = { 
+          title: newTitle, 
+          institution: newSubtitle, 
+          date: newDate, 
+          desc: newDesc 
+        };
+        localStorage.setItem('education', JSON.stringify(education));
+        renderEducation();
+        renderAdminEducation();
+      } else if (editingExperienceIndex !== null) {
+        const newCompany = document.getElementById('editSubtitle').value.trim();
+        const newDate = document.getElementById('editDate').value.trim();
+        
+        if (!newCompany || !newDate) {
+          alert('Бүх талбарыг оруулаарай');
+          return;
+        }
+        
+        experience[editingExperienceIndex] = { 
+          title: newTitle, 
+          company: newCompany, 
+          date: newDate, 
+          desc: newDesc 
+        };
+        localStorage.setItem('experience', JSON.stringify(experience));
+        renderExperience();
+        renderAdminExperience();
+      } else if (editingProjectIndex !== null) {
+        const newLink = document.getElementById('editLink').value.trim();
+        staticProjects[editingProjectIndex] = { 
+          title: newTitle, 
+          desc: newDesc, 
+          link: newLink || staticProjects[editingProjectIndex].link 
+        };
+        localStorage.setItem('staticProjects', JSON.stringify(staticProjects));
+        renderStaticProjects();
+        renderAdminEducation();
+      }
+      
+      closeEditModal();
+    }
+
+    function deleteStaticProject(index) {
+      staticProjects.splice(index, 1);
+      localStorage.setItem('staticProjects', JSON.stringify(staticProjects));
+      renderStaticProjects();
+      renderAdminEducation();
+    }
+
+    function editStaticProject(index) {
+      const p = staticProjects[index];
+      editingProjectIndex = index;
+      editingEducation = false;
+      document.getElementById('modalTitle').textContent = 'Төсөл засах';
+      document.getElementById('editTitle').value = p.title;
+      document.getElementById('editTitle').placeholder = 'Төслийн нэр';
+      document.getElementById('editSubtitle').style.display = 'none';
+      document.getElementById('editDate').style.display = 'none';
+      document.getElementById('editLink').style.display = 'block';
+      document.getElementById('editLink').placeholder = 'Холбоос URL';
+      document.getElementById('editLink').value = p.link || '';
+      document.getElementById('editDesc').value = p.desc;
+      document.getElementById('editDesc').placeholder = 'Төслийн тайлбар';
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function editEducation() {
+      editingEducation = true;
+      editingProjectIndex = null;
+      editingExperienceIndex = null;
+      document.getElementById('modalTitle').textContent = 'Боловсрол засах';
+      document.getElementById('editTitle').value = education.title;
+      document.getElementById('editTitle').placeholder = 'Сургалтын нэр';
+      document.getElementById('editSubtitle').value = education.institution;
+      document.getElementById('editSubtitle').placeholder = 'Сургууль';
+      document.getElementById('editSubtitle').style.display = 'block';
+      document.getElementById('editDate').value = education.date;
+      document.getElementById('editDate').placeholder = 'Хугацаа';
+      document.getElementById('editDate').style.display = 'block';
+      document.getElementById('editLink').style.display = 'none';
+      document.getElementById('editDesc').value = education.desc;
+      document.getElementById('editDesc').placeholder = 'Сургалтын тайлбар';
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function renderExperience() {
+      const container = document.getElementById('experienceContainer');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      const timelineDiv = document.createElement('div');
+      timelineDiv.className = 'timeline';
+      
+      experience.forEach((exp) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'timeline-item';
+        itemDiv.innerHTML = `
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">${exp.title}</div>
+                <div class="card-sub">${exp.company}</div>
+              </div>
+              <div class="card-date">${exp.date}</div>
+            </div>
+            <p class="card-desc">${exp.desc}</p>
+          </div>
+        `;
+        timelineDiv.appendChild(itemDiv);
+      });
+      
+      container.appendChild(timelineDiv);
+      observeElements();
+    }
+
+    function renderAdminExperience() {
+      const adminContainer = document.getElementById('adminExperience');
+      if (!adminContainer) return;
+      
+      let adminHTML = '<h4 style="color: var(--accent); margin-bottom: 12px; font-size: 14px;">Ажлын түүх:</h4>';
+      experience.forEach((exp, index) => {
+        adminHTML += `
+          <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px;">
+            <b style="flex: 1; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text);">${exp.title} @ ${exp.company}</b>
+            <button onclick="editExperience(${index})" style="font-size: 10px; padding: 7px 14px; background: rgba(124,106,247,0.12); color: var(--accent); border: 1px solid rgba(124,106,247,0.2); border-radius: 10px; cursor: pointer;">Edit</button>
+            <button onclick="deleteExperience(${index})" style="font-size: 10px; padding: 7px 14px; background: rgba(247,106,140,0.1); color: var(--accent2); border: 1px solid rgba(247,106,140,0.2); border-radius: 10px; cursor: pointer;">Delete</button>
+          </div>
+        `;
+      });
+      
+      adminContainer.innerHTML = adminHTML;
+    }
+
+    function editExperience(index) {
+      editingExperienceIndex = index;
+      editingProjectIndex = null;
+      editingEducation = false;
+      const exp = experience[index];
+      document.getElementById('modalTitle').textContent = 'Ажлын туршлага засах';
+      document.getElementById('editTitle').value = exp.title;
+      document.getElementById('editTitle').placeholder = 'Ажлын байр';
+      document.getElementById('editSubtitle').value = exp.company;
+      document.getElementById('editSubtitle').placeholder = 'Компани';
+      document.getElementById('editSubtitle').style.display = 'block';
+      document.getElementById('editDate').value = exp.date;
+      document.getElementById('editDate').placeholder = 'Хугацаа';
+      document.getElementById('editDate').style.display = 'block';
+      document.getElementById('editLink').style.display = 'none';
+      document.getElementById('editDesc').value = exp.desc;
+      document.getElementById('editDesc').placeholder = 'Ажлын тайлбар';
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function deleteExperience(index) {
+      experience.splice(index, 1);
+      localStorage.setItem('experience', JSON.stringify(experience));
+      renderExperience();
+      renderAdminExperience();
+    }
+
+    renderAbout();
+    renderProjects();
+    renderStaticProjects();
+    renderEducation();
+    renderAdminEducation();
+    renderExperience();
+    renderAdminExperience();
 
     // ============================================================
     // PARTICLES SYSTEM
