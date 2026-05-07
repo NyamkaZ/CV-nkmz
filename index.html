@@ -1629,19 +1629,37 @@
       }
     }
 
+    function openAdminPanel() {
+      const admin = document.getElementById('admin');
+      if (admin) {
+        admin.style.display = 'block';
+        admin.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function initAdminMode() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('admin') === '1' || params.get('admin') === 'true') {
+        openAdminPanel();
+      }
+    }
+
     document.addEventListener('keydown', e => {
       if (e.key === '0') {
         const pass = prompt('Admin password?');
         if (pass === '0') {
-          const admin = document.getElementById('admin');
-          if (admin) admin.style.display = 'block';
+          openAdminPanel();
           alert('Admin mode ON');
+        } else if (pass !== null) {
+          alert('Нэвтрэх нууц үг буруу байна');
         }
       }
       if (e.key === 'Escape') {
         closeEditModal();
       }
     });
+
+    initAdminMode();
 
     // Close modal when clicking outside
     document.getElementById('editModal').addEventListener('click', (e) => {
